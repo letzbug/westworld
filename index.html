@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Westworld Saloon Piano Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <section class="brand-panel">
+        <div class="brand-title">WESTWORLD</div>
+        <div class="brand-subtitle">SALOON PIANO SIMULATOR</div>
+        <div class="brand-line"></div>
+        <div class="brand-small">WURLITZER STYLE PLAYER PIANO</div>
+      </section>
+
+      <nav class="tabs" aria-label="View tabs">
+        <button class="tab active" data-view="piano">
+          <span class="tab-icon">▥</span>
+          <span>PIANO</span>
+        </button>
+        <button class="tab" data-view="roll">
+          <span class="tab-icon">◉</span>
+          <span>ROLL</span>
+        </button>
+        <button class="tab" data-view="mechanism">
+          <span class="tab-icon">⚙</span>
+          <span>MECHANISM</span>
+        </button>
+        <button class="tab" data-view="settings">
+          <span class="tab-icon">✦</span>
+          <span>SETTINGS</span>
+        </button>
+        <button class="tab" data-view="about">
+          <span class="tab-icon">ⓘ</span>
+          <span>ABOUT</span>
+        </button>
+      </nav>
+
+      <section class="now-playing">
+        <div class="now-label">Now Playing</div>
+        <div id="nowTitle" class="now-title">Sweetwater.mid</div>
+        <div class="now-row">
+          <span id="timeText">00:00 / 02:08</span>
+          <span id="statusLight" class="status-light"></span>
+        </div>
+      </section>
+    </header>
+
+    <aside class="left-panel">
+      <section class="panel song-panel">
+        <h2>SONG LIBRARY</h2>
+        <div id="songList" class="song-list"></div>
+      </section>
+
+      <section class="panel transport">
+        <button id="prevBtn" title="Previous">◀</button>
+        <button id="playBtn" title="Play/Pause">▶</button>
+        <button id="nextBtn" title="Next">▶▶</button>
+        <button id="stopBtn" title="Stop">■</button>
+      </section>
+
+      <section class="panel controls">
+        <label>
+          <span>SPEED</span>
+          <input id="speedSlider" type="range" min="50" max="160" value="100" />
+          <b id="speedValue">100%</b>
+        </label>
+        <label>
+          <span>VOLUME</span>
+          <input id="volumeSlider" type="range" min="0" max="100" value="80" />
+          <b id="volumeValue">80%</b>
+        </label>
+        <label class="switch-label">
+          <span>SHOW NOTE HIGHLIGHTS</span>
+          <input id="highlightToggle" type="checkbox" checked />
+          <i></i>
+        </label>
+      </section>
+
+      <section class="panel mechanism-tabs">
+        <h2>MECHANISM VIEW</h2>
+        <div class="mini-buttons">
+          <button data-mech="keys">KEYS</button>
+          <button data-mech="hammers">HAMMERS</button>
+          <button data-mech="dampers">DAMPERS</button>
+          <button class="active" data-mech="all">ALL</button>
+        </div>
+      </section>
+    </aside>
+
+    <section class="main-stage">
+      <div class="stage-glow"></div>
+
+      <div class="lamp lamp-left"><span></span></div>
+      <div class="lamp lamp-right"><span></span></div>
+
+      <section class="roll-chamber">
+        <div class="roller left-roller"></div>
+        <div class="roller right-roller"></div>
+        <div class="roll-frame">
+          <div id="paperRoll" class="paper-roll">
+            <div id="holeLayer" class="hole-layer"></div>
+          </div>
+        </div>
+        <div class="nameplate">WURLITZER <small>PLAYER PIANO</small></div>
+      </section>
+
+      <section class="machine">
+        <div class="shaft"></div>
+        <div id="actionRail" class="action-rail"></div>
+      </section>
+
+      <section class="keyboard-wrap">
+        <div id="keyboard" class="keyboard"></div>
+      </section>
+
+      <section class="schematic">
+        <article class="how">
+          <h3>HOW IT WORKS</h3>
+          <p>The paper roll moves from right to left. Holes in the roll trigger air valves, then the action lifts the hammers to strike the strings.</p>
+        </article>
+        <article class="diagram">
+          <span>PAPER ROLL</span><b>→</b><span>AIR VALVE</span><b>→</b><span>ACTION</span><b>→</b><span>HAMMER</span><b>→</b><span>STRING</span>
+          <div class="diagram-line"></div>
+        </article>
+      </section>
+    </section>
+
+    <div id="viewOverlay" class="view-overlay hidden">
+      <button id="closeOverlay" class="close-overlay">×</button>
+      <h2 id="overlayTitle"></h2>
+      <p id="overlayText"></p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
